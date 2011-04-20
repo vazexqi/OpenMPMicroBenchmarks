@@ -11,8 +11,8 @@ all: $(EXEs)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
 
 run: all
-	./mmmult_task.out
 	./mmmult_for.out
+	./mmmult_task.out
 
 clean:
 	$(RM) -f $(EXEs) *.$(OBJ)

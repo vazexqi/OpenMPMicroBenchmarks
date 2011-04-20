@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <omp.h>
 
-#define ORDER 1000
+#define ORDER 1024
 #define AVAL 3.0
 #define BVAL 5.0
 #define TOL  0.001

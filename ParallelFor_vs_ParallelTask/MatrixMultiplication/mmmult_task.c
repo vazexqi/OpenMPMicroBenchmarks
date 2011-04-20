@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <omp.h>
 
-#define ORDER 1000
+#define ORDER 1024
 #define AVAL 3.0
 #define BVAL 5.0
 #define TOL  0.001
@@ -63,10 +63,11 @@ int main(int argc, char *argv[]) {
   #pragma omp parallel
   {
   #pragma omp single // Single thread to start the computation
-    { 
+    {
       for(task_iter = 0; task_iter < omp_get_num_threads(); task_iter++) {
-        #pragma omp task firstprivate(task_iter) private(tmp, i, j, k)
-        for(i = task_iter * 250; i < (task_iter + 1) * 250; i++) {
+        int chunk = ( ORDER / omp_get_num_threads() );                       // For simplicity ORDER is divisible by num_threads
+        #pragma omp task firstprivate(task_iter) private(tmp, i, j, k) firstprivate(chunk)
+        for(i = task_iter * chunk; i < (task_iter + 1) * chunk; i++) {
           for(j = 0; j < Mdim; j++) {
             tmp = 0.0;
 
@@ -106,4 +107,3 @@ int main(int argc, char *argv[]) {
 
   printf("\n all done \n");
 }
-
