@@ -1,0 +1,3 @@
+This is a set of simple benchmarks to determine how different constructs compare
+to the new tasking feature in OpenMP 3.0. The set of benchmarks is taken from
+various sources and are attributed as appropriate.
