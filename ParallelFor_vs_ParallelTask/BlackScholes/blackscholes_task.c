@@ -214,7 +214,7 @@ int bs_thread(void *tid_ptr) {
       {
         for(task_iter = 0; task_iter < omp_get_num_threads(); task_iter++) {
           int chunk = ( numOptions / omp_get_num_threads() );
-          #pragma omp task firstprivate(task_iter) private(i, price, priceDelta) firstprivate(chunk)
+          #pragma omp task private(i, price, priceDelta) firstprivate(task_iter, chunk)
           for(i = task_iter * chunk; i < (task_iter + 1) * chunk; i++) {
                   /* Calling main function to calculate option value based on
                    * Black & Sholes's equation.
