@@ -1,6 +1,7 @@
 # Modify as necessary to reflect your environment
 
-CC=/opt/local/bin/gcc-mp-4.5 
+CC=/opt/local/bin/gcc-mp-4.5
+CPP=/opt/local/bin/g++-mp-4.5
 CLINKER=$(CC)
 OPTFLAGS= -fopenmp -std=c99
 LIBS=
