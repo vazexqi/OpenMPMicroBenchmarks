@@ -8,9 +8,10 @@
 #include <omp.h>
 
 #define TOKENS 50
-#define WAITTIME_SEC 1
 
 using namespace std;
+
+int WAITTIME_SEC = 1;
 
 typedef pair<int,int> WrappedToken;
 
@@ -152,7 +153,11 @@ int Generate::internalCounter = 0;
 int main(int argc, char* argv[]) {
   srand( time(NULL) );
 
+  if(argc >= 2)
+    WAITTIME_SEC = atoi(argv[1]);
+
   cout << "Beginning simplest pipeline with fixed number of tokens" << endl;
+  cout << "Transform stage takes: " << WAITTIME_SEC << endl;
   // We have fixed the number of tokens here but don't make the invalid assumption
   // that we will always know this in advance
 
